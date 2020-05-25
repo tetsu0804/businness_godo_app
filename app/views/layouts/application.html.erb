@@ -22,7 +22,18 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <%= link_to 'ログイン', new_user_session_path, class:'nav-item' %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'ユーザー登録', new_user_registration_path, class:'nav-item' %>
+            </li>
+
+            <li class="nav-item">
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'nav-item' %>
+            </li>
+            <li class="nav-item">
+              <%= current_user.email %>
             </li>
 
             <li class="nav-item">
