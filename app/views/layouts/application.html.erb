@@ -21,20 +21,28 @@
             <li class="nav-item active">
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-              <%= link_to 'ログイン', new_user_session_path, class:'nav-item' %>
-            </li>
 
-            <li class="nav-item">
-              <%= link_to 'ユーザー登録', new_user_registration_path, class:'nav-item' %>
-            </li>
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'nav-item' %>
+              </li>
+              <li class="nav-item">
+                <%= current_user.email %>
+              </li>
+              <% if current_user.admin? %>
+                <li>
+                  <%= link_to '管理者ページ', '/admin', class: 'nav-item' %>
+                </li>
+              <% end %>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'ログイン', new_user_session_path, class:'nav-item' %>
+              </li>
 
-            <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'nav-item' %>
-            </li>
-            <li class="nav-item">
-              <%= current_user.email %>
-            </li>
+              <li class="nav-item">
+                <%= link_to 'ユーザー登録', new_user_registration_path, class:'nav-item' %>
+              </li>
+            <% end %>
 
             <li class="nav-item">
               <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
