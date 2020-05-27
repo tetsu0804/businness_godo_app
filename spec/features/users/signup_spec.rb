@@ -10,10 +10,10 @@ RSpec.feature 'Signup User', type: :feature do
 
     visit '/'
     click_link '管理者ページ'
-    within first('tbody td') do
-      click_link 'Users'
+    within ('tbody tr') do
+      click_link 'User'
     end
-    click_link 'Add new'
+    click_link 'Translation missing: ja.admin.actions.new.menu'
     fill_in 'Email', with: 'test2@test.com'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
@@ -23,7 +23,7 @@ RSpec.feature 'Signup User', type: :feature do
     fill_in 'Address', with: '山形県米沢市御廟二丁目'
     click_button 'Save'
     expect(page.current_path).to eq  '/admin/user'
-    expect(page).to have_content 'User successfully created'
+    expect(page).to have_content 'translation missing: ja.admin.flash.successful'
     expect(User.count).to eq 2
   end
 
@@ -39,9 +39,9 @@ RSpec.feature 'Signup User', type: :feature do
     visit '/'
     click_link '管理者ページ'
     within first('tbody td') do
-      click_link 'Users'
+      click_link 'User'
     end
-    click_link 'Add new'
+    click_link 'Translation missing: ja.admin.actions.new.menu'
     fill_in 'Email', with: ''
     fill_in 'Password', with: ''
     fill_in 'Password confirmation', with: ''
@@ -51,7 +51,6 @@ RSpec.feature 'Signup User', type: :feature do
     fill_in 'Address', with: ''
     click_button 'Save'
     expect(User.count).to eq 1
-    expect(page).to have_content 'User failed to be created'
   end
 end
 #first_name: '哲朗', last_name: '吉田',address: '山形県米沢市御廟二丁目',

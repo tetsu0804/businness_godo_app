@@ -11,7 +11,7 @@ RSpec.feature 'Login User', type: :feature do
     fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
     expect(page.current_path).to eq root_path
-    expect(page).to have_content 'Signed in successfully.'
+    expect(page).to have_content 'ログインしました。'
     expect(page).to have_content '吉田哲朗さん'
     expect(page).to have_link 'ログアウト'
     expect(page).to_not have_link 'ログイン'
@@ -25,7 +25,7 @@ RSpec.feature 'Login User', type: :feature do
     expect(page.current_path).to eq new_user_session_path
     expect(page).to have_link 'ログイン'
     expect(page).to_not have_link 'ログアウト'
-    expect(page).to have_content 'Invalid Email or password.'
+    expect(page).to have_content 'Email もしくはパスワードが不正です。'
   end
 
   scenario 'Invalid Login' do
@@ -36,6 +36,6 @@ RSpec.feature 'Login User', type: :feature do
     expect(page.current_path).to eq new_user_session_path
     expect(page).to have_link 'ログイン'
     expect(page).to_not have_link 'ログアウト'
-    expect(page).to have_content 'Invalid Email or password.'
+    expect(page).to have_content 'Email もしくはパスワードが不正です。'
   end
 end
