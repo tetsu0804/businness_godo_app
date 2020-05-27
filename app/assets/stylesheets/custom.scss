@@ -1,5 +1,10 @@
 @import "bootstrap";
 
+html {
+  font-size: 16px;
+  font-family: 'MS 明朝';
+}
+
 body {
   margin: 10px;
   background-color: rgb(186, 236, 255);
@@ -28,4 +33,22 @@ body {
 
 .main-table {
   margin-top: 10px;
+}
+
+.main-content {
+  margin-top: 12px;
+  font-size: 2.5rem;
+}
+
+.new-form {
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.new-content {
+  color: rgb(255, 255, 255);
+}
+
+.new-font {
+  font-size: 1.3rem;
 }

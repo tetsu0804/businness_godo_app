@@ -1,0 +1,10 @@
+  <div class="col-md-3 main-content">部署</div>
+  <% if current_user.admin? %>
+    <div class="col-md-8 float-rigth p-3 mb-2 bg-success rounded-lg new-form text-center ">
+      <%= link_to '部署作成リンク',  new_department_path, class: 'text-white new-font' %>
+    </div>
+  <% end %>
+
+  <% @departments.each do |department| %>
+    <%= link_to department.department_name, users_path %>
+  <% end %>

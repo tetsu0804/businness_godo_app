@@ -1,0 +1,10 @@
+<h3 class="col-md-12 text-center">部署作成</h3>
+<div class="col-md-12">
+  <%= form_with(model: @department, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.label :department_name, '部署名' %>
+      <%= f.text_field :department_name, class: 'form-control' %>
+    </div>
+    <%= f.submit '作成', class: 'btn btn-primary col-md-12' %>
+  <% end %>
+</div>

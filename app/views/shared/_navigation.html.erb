@@ -26,11 +26,11 @@
             <%= link_to '管理者ページ', '/admin', class: "header-font" %>
           </li>
           <li class="nav-link right-content">
-            <%= link_to '社員ページ', users_path, class: "header-font" %>
+            <%= link_to '社員ページ',  departments_path, class: "header-font" %>
           </li>
         <% else %>
           <li class="nav-link right-content">
-            <%= link_to '連絡帳', users_path, class: "header-font" %>
+            <%= link_to '連絡帳',  departments_path, class: "header-font" %>
           </li>
         <% end %>
       <% else %>

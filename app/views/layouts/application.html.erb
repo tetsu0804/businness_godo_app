@@ -12,8 +12,11 @@
     <%= render 'shared/navigation' %>
     <div class="container">
       <div class="row">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <% flash.each do |key, message| %>
+          <div class="alert-<%= key == 'notice' ? 'suceess' : 'danger' %>">
+            <%= message %>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </div>
