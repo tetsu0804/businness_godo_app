@@ -1,6 +1,6 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <%= link_to '米沢合同', root_path, class:"navbar-brand" %>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light rounded-lg">
+    <%= link_to '米沢合同', root_path, class:"navbar-brand header-font" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,34 +8,34 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <%= link_to 'Home', root_path, class:"nav-link" %>
+          <%= link_to 'Home', root_path, class:"nav-link", class: "header-font" %>
         </li>
       </ul>
     </div>
     <ul class="nav justify-content-end nav-right">
       <% if user_signed_in? %>
         <li class="nav-link right-content">
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-font" %>
         </li>
 
         <li class="nav-link right-content">
-          <%= link_to full_name(current_user), user_path(current_user.id) %>
+          <%= link_to full_name(current_user), user_path(current_user.id), class: "header-font" %>
         </li>
         <% if current_user.admin? %>
           <li class="nav-link right-content">
-            <%= link_to '管理者ページ', '/admin' %>
+            <%= link_to '管理者ページ', '/admin', class: "header-font" %>
           </li>
           <li class="nav-link right-content">
-            <%= link_to '社員ページ', users_path %>
+            <%= link_to '社員ページ', users_path, class: "header-font" %>
           </li>
         <% else %>
           <li class="nav-link right-content">
-            <%= link_to '連絡帳', users_path %>
+            <%= link_to '連絡帳', users_path, class: "header-font" %>
           </li>
         <% end %>
       <% else %>
         <li class="nav-link right-content">
-          <%= link_to 'ログイン', new_user_session_path %>
+          <%= link_to 'ログイン', new_user_session_path, class: "header-font" %>
         </li>
       <% end %>
     </ul>

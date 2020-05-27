@@ -1,5 +1,15 @@
 @import "bootstrap";
 
+body {
+  margin: 10px;
+  background-color: rgb(186, 236, 255);
+}
+.header-font {
+  color: rgb(0, 0, 0);
+   &:hover {
+    color: rgb(148, 148, 148);
+  }
+}
 .home-content {
   color: rgb(227, 3, 50);
 }
@@ -10,4 +20,12 @@
 
 .right-content {
   margin-left: 5px;
+}
+
+.index-title {
+  margin-top: 10px;
+}
+
+.main-table {
+  margin-top: 10px;
 }
