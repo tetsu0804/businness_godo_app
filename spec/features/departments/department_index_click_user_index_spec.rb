@@ -15,7 +15,7 @@ RSpec.feature '部署一覧からUser一覧ページへ' do
     click_link '社員ページ'
     click_link '短距離'
     expect(page).to have_link '吉田哲朗さん'
-    expect(page).to have_link '早坂絵理子さん'
+    expect(page).to have_content '早坂絵理子さん'
     expect(page).to have_content '社員一覧'
   end
 end

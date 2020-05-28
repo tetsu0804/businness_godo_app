@@ -18,11 +18,9 @@ class DepartmentsController < ApplicationController
     end
   end
 
-  def relation
-binding.pry    
-    @user = User.find(params[:id])
-    @user_department = @user.user_departments.build
-    @departments = Department.all
+  def squeeze
+    @department = Department.find(params[:department_id])
+    @user_departments = @department.user_departments
   end
 
   private

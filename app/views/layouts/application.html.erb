@@ -13,7 +13,7 @@
     <div class="container">
       <div class="row">
         <% flash.each do |key, message| %>
-          <div class="alert-<%= key == 'notice' ? 'suceess' : 'danger' %>">
+          <div class=" col-md-12 text-center alert-<%= key == 'notice' ? 'suceess' : 'danger' %>">
             <%= message %>
           </div>
         <% end %>

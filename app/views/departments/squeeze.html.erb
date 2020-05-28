@@ -1,0 +1,17 @@
+<div class="col-md-3 main-content">社員一覧</div>
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">氏名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user_departments.each do |user_department| %>
+    <tr>
+      <th scope="row"><%= user_department.user.id %></th>
+      <td><%= full_name(user_department.user) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
