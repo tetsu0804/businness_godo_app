@@ -18,6 +18,13 @@ class DepartmentsController < ApplicationController
     end
   end
 
+  def relation
+binding.pry    
+    @user = User.find(params[:id])
+    @user_department = @user.user_departments.build
+    @departments = Department.all
+  end
+
   private
 
     def admin_access

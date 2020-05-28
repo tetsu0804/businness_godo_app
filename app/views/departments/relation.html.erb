@@ -1,0 +1,4 @@
+<%= form_with(model: @user_department, local: true) do |f| %>
+  <%= f.collection_check_boxes(:department_ids, @departments, :name_with_initial) %>
+  <%= f.submit '作成' %>
+<% end %>

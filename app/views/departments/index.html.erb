@@ -1,10 +1,17 @@
   <div class="col-md-3 main-content">部署</div>
   <% if current_user.admin? %>
-    <div class="col-md-8 float-rigth p-3 mb-2 bg-success rounded-lg new-form text-center ">
+    <div class="col-md-4 float-rigth p-3 mb-2 bg-primary rounded-lg new-form text-center ">
       <%= link_to '部署作成リンク',  new_department_path, class: 'text-white new-font' %>
+    </div>
+    <div class="col-md-4 float-rigth p-3 mb-2 bg-success rounded-lg new-form text-center ">
+      <%= link_to '部署異動リンク',  departments_relation_path , class: 'text-white new-font' %>
     </div>
   <% end %>
 
+<div class="department col-md-11">
   <% @departments.each do |department| %>
-    <%= link_to department.department_name, users_path %>
+    <div class=" shadow-lg p-3 mb-5 bg-white rounded  text-center">
+      <%= link_to department.department_name, users_path, class: 'main-content header-font' %>
+    </div>
   <% end %>
+</div>
