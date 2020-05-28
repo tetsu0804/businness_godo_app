@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # get 'users/index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index, :edit, :update, :destroy]
   root to: 'home#home'
   resources :departments do
     get '/squeeze', to: 'departments#squeeze', action: :squeeze

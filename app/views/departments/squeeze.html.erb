@@ -10,7 +10,7 @@
     <% @user_departments.each do |user_department| %>
     <tr>
       <th scope="row"><%= user_department.user.id %></th>
-      <td><%= full_name(user_department.user) %></td>
+      <td id="user-department"><%= link_to full_name(user_department.user), user_path(user_department.user.id) %></td>
     </tr>
     <% end %>
   </tbody>
