@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :not_admin, only: [:edit, :update]
+  before_action :not_admin, only: [:edit, :update, :destroy]
   def show
     @user = User.find(params[:id])
     @user_departments = @user.user_departments
@@ -23,6 +23,15 @@ class UsersController < ApplicationController
       flash[:alert] = '更新に失敗しました'
       render 'edit'
     end
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    flash[:notice] = "#{user.last_name} #{user.first_name}さんを削除しました"
+    user.destroy
+    user_departments = user.user_departments
+    user_department = user_departments.last
+    redirect_to departments_path
   end
 
   private
