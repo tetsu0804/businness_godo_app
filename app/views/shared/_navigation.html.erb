@@ -23,6 +23,10 @@
         </li>
 
         <li class="nav-link right-content">
+          <%= link_to '勤務一覧', user_work_books_path(current_user.id), class: "header-font" %>
+        </li>
+
+        <li class="nav-link right-content">
           <%= link_to full_name(current_user), user_path(current_user.id), class: "header-font" %>
         </li>
         <% if current_user.admin? %>

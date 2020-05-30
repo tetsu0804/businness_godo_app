@@ -1,4 +1,10 @@
 class WorkBooksController < ApplicationController
+
+  def index
+    @user = User.find(params[:user_id])
+    @work_books = @user.work_books
+  end
+
   def new
     @user = User.find(params[:user_id])
     work =  @user.work_books.last

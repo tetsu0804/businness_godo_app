@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   resources :users, only: [:show, :index, :edit, :update, :destroy] do
-    resources :work_books, only: [:new, :create, :edit, :update, :destroy]
+    resources :work_books, only: [:new, :create, :edit, :update, :destroy, :index]
   end
   root to: 'home#home'
   resources :departments do
