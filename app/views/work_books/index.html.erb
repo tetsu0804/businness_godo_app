@@ -4,6 +4,7 @@
   </div>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
+      <%= will_paginate(@things, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, previous_label: '&lt 前へ', next_label: '次へ &gt') %>
       <table class="table">
         <thead>
           <tr>
@@ -32,6 +33,7 @@
           <% end %>
         </tbody>
       </table>
+      <%= will_paginate(@things, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, previous_label: '&lt 前へ', next_label: '次へ &gt') %>
     </blockquote>
   </div>
 </div>
