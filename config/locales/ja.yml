@@ -3,3 +3,8 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%Y年%m月%d日"
+      minuts: "%m月%d日 %H時%M分"
+  enums:
+    paid:
+      vacation: "有給"
+      work: "出勤"
