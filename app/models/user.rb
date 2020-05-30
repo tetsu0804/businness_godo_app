@@ -9,4 +9,12 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true
+
+  def today_works
+    self.work_books.where('created_at >= ?', Time.zone.now.beginning_of_day).first
+  end
+
+  def work_index_will_pagenate(params)
+    self.work_books.paginate(page: params,per_page: 15)
+  end
 end

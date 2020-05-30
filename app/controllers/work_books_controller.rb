@@ -2,7 +2,7 @@ class WorkBooksController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @work_books = @user.work_books.paginate(page: params[:page],per_page: 15)
+    @work_books = @user.work_index_will_pagenate(params[:page])
   end
 
   def new
@@ -10,7 +10,7 @@ class WorkBooksController < ApplicationController
     work =  @user.work_books.last
     if work.present?
       if work.created_at.today?
-        @edit_work_book = @user.work_books.where('created_at >= ?', Time.zone.now.beginning_of_day).first
+        @edit_work_book = @user.today_works
       else
         @work_book = @user.work_books.build
       end
