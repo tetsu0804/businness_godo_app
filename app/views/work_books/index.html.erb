@@ -1,29 +1,37 @@
-<%= full_name(@user) %>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">日付</th>
-      <th scope="col">出勤時間</th>
-      <th scope="col">退勤時間</th>
-      <th scope="col">有給</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @work_books.each do |work_book| %>
-      <tr>
-        <th scope="row"><%= l work_book.created_at, format: :short %></th>
-        <td><%= l work_book.created_at, format: :super_short %></td>
-        <% if work_book.updated_at.present? %>
-          <td><%= l work_book.updated_at, format: :super_short %></td>
-        <% else %>
-          <td></td>
-        <% end %>
-        <% if work_book.paid.present? %>
-          <td><%= work_book.paid_i18n %></td>
-        <% else %>
-          <td></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="card col-md-12 work_books">
+  <div class="card-header">
+    <%= full_name(@user) %>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">日付</th>
+            <th scope="col">出勤時間</th>
+            <th scope="col">退勤時間</th>
+            <th scope="col">有給</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @work_books.each do |work_book| %>
+            <tr>
+              <th scope="row"><%= l work_book.created_at, format: :short %></th>
+              <td><%= l work_book.created_at, format: :super_short %></td>
+              <% if work_book.updated_at.present? %>
+                <td><%= l work_book.updated_at, format: :super_short %></td>
+              <% else %>
+                <td></td>
+              <% end %>
+              <% if work_book.paid.present? %>
+                <td><%= work_book.paid_i18n %></td>
+              <% else %>
+                <td></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </blockquote>
+  </div>
+</div>
