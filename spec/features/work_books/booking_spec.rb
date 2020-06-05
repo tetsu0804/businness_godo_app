@@ -48,4 +48,20 @@ RSpec.feature '当月の出勤簿',type: :feature do
     expect(page).to have_content '2020年05月29日'
     expect(page).to have_content '10時00分'
   end
+
+  scenario '今月ボタン成功', js: true do
+    visit user_booking_path(@eriko.id)
+    fill_in 'work_book[work_search]', with: '202005'
+    click_button '検索'
+    click_button '今月'
+    expect(page).to have_content '2020年06月04日'
+    expect(page).to have_content '10時00分'
+    expect(page).to have_content '2020年06月03日'
+    expect(page).to have_content '10時00分'
+    expect(page).to have_content '15時00分'
+    expect(page).to have_content '2020年06月02日'
+    expect(page).to have_content '10時00分'
+    expect(page).to have_content '15時00分'
+    expect(page).to_not have_content '2020年05月28日'
+  end
 end
