@@ -41,11 +41,11 @@ RSpec.feature '当月の出勤簿',type: :feature do
     puts @work4.created_at
   end
 
-  scenario '月別検索' do
-    visit  user_booking_path(@tetsu.id)
+  scenario '月別検索', js: true do
+    visit  user_booking_path(@eriko.id)
     fill_in 'work_book[work_search]', with: '202005'
     click_button '検索'
-    expect(page).to have_content '2020年5月29日'
-    expect(page).to have_content '10時10分'
+    expect(page).to have_content '2020年05月29日'
+    expect(page).to have_content '10時00分'
   end
 end
