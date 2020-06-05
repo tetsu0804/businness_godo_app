@@ -1,14 +1,22 @@
 <% unless @work_book.blank? %>
-  <%= form_with(model: @work_book,url:  user_work_books_path, local: true) do |f| %>
-    <%= f.hidden_field(:user_id, :value => @user.id) %>
+  <%= form_with(model: @work_book,url:  user_work_books_path, local: true, class: 'col-md-12 department') do |f| %>
+  <%= f.hidden_field(:user_id, :value => @user.id) %>
+  <div class="form-group text-center">
+    <div class="form-check col-md-12">
     <%= f.label :paid, '有給' %>
     <%= f.check_box  :paid, {}, "vacation", "work" %>
-    <%= f.submit '出勤' %>
+
+    <%= f.submit '出勤', class: 'btn btn-success col-md-3' %>
+    </div>
+  </div>
+
   <% end %>
 <% else %>
 
 
-  <%= form_with(model: @edit_work_book, url:  user_work_book_path(@user.id, @edit_work_book.id), method: :patch, local: true) do |f| %>
-    <%= f.submit '退勤' %>
+  <%= form_with(model: @edit_work_book, url:  user_work_book_path(@user.id, @edit_work_book.id), method: :patch, local: true, class: 'col-md-12 department') do |f| %>
+    <div class="form-group text-center">
+    <%= f.submit '退勤', class: 'btn btn-success col-md-3' %>
+    </div>
   <% end %>
 <% end %>
