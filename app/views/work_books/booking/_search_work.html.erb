@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">日付</th>
+      <th scope="col">出勤時間</th>
+      <th scope="col">退勤時間</th>
+      <th scope="col">有給</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @work_books.each do |work_book| %>
+      <tr>
+        <th scope="row"><%= l work_book.created_at, format: :short %></th>
+        <td><%= l work_book.created_at, format: :super_short %></td>
+        <td><%= l work_book.updated_at, format: :super_short %></td>
+        <td><%= work_book.paid %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

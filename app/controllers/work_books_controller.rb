@@ -41,6 +41,34 @@ class WorkBooksController < ApplicationController
       render 'new'
     end
   end
+
+  def book
+    @users = User.all
+  end
+
+  def booking
+    @user = User.find(params[:user_id])
+    @this_month_work_books = WorkBook.joins(:user).where('user_id' => @user.id, 'created_at' => Time.zone.now.beginning_of_month..Time.zone.now)
+    @work_books = WorkBook.joins(:user).where(user_id: @user.id)
+
+  end
+
+  def search
+    work_search = params[:work_book][:work_search]
+    work_search += '01'
+    @user = User.find(params[:user_id])
+    @books = WorkBook.joins(:user).where(user_id: @user.id)
+    @work_books = @books.where(created_at: work_search.in_time_zone.all_month)
+
+    if @work_books.present?
+        respond_to do |format|
+          format.html { redirect_to user_booking_path(@user.id) }
+          format.js { render 'booking'}
+        end
+    else
+      render 'booking'
+    end
+  end
   private
 
     def work_book_params
