@@ -1,3 +1,17 @@
-<% @users.each do |user| %>
-  <%= link_to full_name(user),   user_booking_path(user.id), method: :get %>
-<% end %>
+<h2 class="index-title">社員一覧</h2>
+<table class="table main-table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">氏名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <th scope="row"><%= user.id %></th>
+        <td><%= link_to "#{user.last_name} #{user.first_name}", user_booking_path(user.id), method: :get %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

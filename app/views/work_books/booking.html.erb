@@ -10,36 +10,47 @@
   <small class="subscript-text text-muted col-md-12">2020年1月の場合は 202001 と入力ください</small>
 <% end %>
 
-
-<div class="h3 col-md-12 index-title">
-  <%= full_name(@user) %>
-</div>
-
-<div id="search-work" class="col-md-12 table department">
-  <%= render partial: 'work_books/booking/search_work', locals: {work_books: @work_books} %>
-</div>
-
-<% unless @this_month_work_books.blank? %>
-  <div id= "table-work" class="department col-md-12">
-    <table  class="table">
-      <thead>
-        <tr>
-          <th scope="col">日付</th>
-          <th scope="col">出勤時間</th>
-          <th scope="col">退勤時間</th>
-          <th scope="col">有給</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @this_month_work_books.each do |work_book| %>
-          <tr>
-            <th scope="row"><%= l work_book.created_at, format: :short %></th>
-            <td><%= l work_book.created_at, format: :super_short %></td>
-            <td><%= l work_book.updated_at, format: :super_short %></td>
-            <td><%= work_book.paid %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="card col-md-12 work_books">
+  <div class="card-header name-work">
+    <%= full_name(@user) %>
   </div>
-<% end %>
+   <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <div id="search-work" class="col-md-12 table department">
+        <%= render partial: 'work_books/booking/search_work', locals: {work_books: @work_books} %>
+      </div>
+      <% unless @this_month_work_books.blank? %>
+        <div id= "table-work" class="department col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">日付</th>
+                <th scope="col">出勤時間</th>
+                <th scope="col">退勤時間</th>
+                <th scope="col">有給</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @this_month_work_books.each do |work_book| %>
+                <tr>
+                  <th scope="row"><%= l work_book.created_at, format: :short %></th>
+                  <td><%= l work_book.created_at, format: :super_short %></td>
+                  <% if work_book.updated_at.present? %>
+                    <td><%= l work_book.updated_at, format: :super_short %></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
+                  <% if work_book.paid.present? %>
+                    <td><%= work_book.paid_i18n %></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </blockquote>
+  </div>
+</div>
