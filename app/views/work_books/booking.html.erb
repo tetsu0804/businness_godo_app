@@ -1,40 +1,45 @@
-<%= form_with(model: @work_books, url: user_search_path(@user.id), method: :get) do |f| %>
-  <%= f.label '年月検索' %>
-  <%= f.text_field :work_search %>
 
-  <%= f.submit '検索', id: 'btn-search' %>
-  <div id="this-month-btn" class="btn btn-info">
-    今月
+<%= form_with(model: @work_books, url: user_search_path(@user.id), method: :get) do |f| %>
+  <div class="input-group col-md-12 department">
+    <%= f.text_field :work_search, class:"form-control", placeholder: '年月検索: 202001' %>
+    <div class="input-group-append" id="button-addon4">
+      <%= f.submit '検索', id: 'btn-search', class: 'btn btn-secondary' %>
+      <button id="this-month-btn" class="btn btn-light" type="button">今月</button>
+    </div>
   </div>
+  <small class="subscript-text text-muted col-md-12">2020年1月の場合は 202001 と入力ください</small>
 <% end %>
-<small class="text-muted">2020年1月の場合は 202001 と入力ください</small>
-<div class="h3 col-md-12">
+
+
+<div class="h3 col-md-12 index-title">
   <%= full_name(@user) %>
 </div>
 
-<div id="search-work" class="col-md-12">
+<div id="search-work" class="col-md-12 table department">
   <%= render partial: 'work_books/booking/search_work', locals: {work_books: @work_books} %>
 </div>
 
 <% unless @this_month_work_books.blank? %>
-<table id= "table-work" class="table">
-  <thead>
-    <tr>
-      <th scope="col">日付</th>
-      <th scope="col">出勤時間</th>
-      <th scope="col">退勤時間</th>
-      <th scope="col">有給</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @this_month_work_books.each do |work_book| %>
-      <tr>
-        <th scope="row"><%= l work_book.created_at, format: :short %></th>
-        <td><%= l work_book.created_at, format: :super_short %></td>
-        <td><%= l work_book.updated_at, format: :super_short %></td>
-        <td><%= work_book.paid %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div id= "table-work" class="department col-md-12">
+    <table  class="table">
+      <thead>
+        <tr>
+          <th scope="col">日付</th>
+          <th scope="col">出勤時間</th>
+          <th scope="col">退勤時間</th>
+          <th scope="col">有給</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @this_month_work_books.each do |work_book| %>
+          <tr>
+            <th scope="row"><%= l work_book.created_at, format: :short %></th>
+            <td><%= l work_book.created_at, format: :super_short %></td>
+            <td><%= l work_book.updated_at, format: :super_short %></td>
+            <td><%= work_book.paid %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% end %>
