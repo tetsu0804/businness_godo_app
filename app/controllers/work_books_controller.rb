@@ -2,7 +2,7 @@ class WorkBooksController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @work_books = @user.work_index_will_pagenate(params[:page])
+    @work_books = @user.work_index_will_pagenate(params[:page]).order('created_at DESC')
   end
 
   def new
@@ -48,17 +48,16 @@ class WorkBooksController < ApplicationController
 
   def booking
     @user = User.find(params[:user_id])
-    @this_month_work_books = WorkBook.joins(:user).where('user_id' => @user.id, 'created_at' => Time.zone.now.beginning_of_month..Time.zone.now)
-    @work_books = WorkBook.joins(:user).where(user_id: @user.id)
-
+    @this_month_work_books = WorkBook.this_month_work(@user.id).order('created_at DESC')
+    @work_books = WorkBook.join_user(@user.id)
   end
 
   def search
     work_search = params[:work_book][:work_search]
     work_search += '01'
     @user = User.find(params[:user_id])
-    @books = WorkBook.joins(:user).where(user_id: @user.id)
-    @work_books = @books.where(created_at: work_search.in_time_zone.all_month)
+    @books = WorkBook.join_user(@user.id)
+    @work_books = @books.date_search(work_search)
 
     if @work_books.present?
         respond_to do |format|

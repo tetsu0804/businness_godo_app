@@ -38,5 +38,5 @@
 </table>
 <% if current_user.admin? %>
   <%= link_to '編集', edit_user_path(@user.id), class: "btn btn-secondary" %>
-  <%= link_to '削除', user_path(@user.id), method: :delete, class: "btn btn-secondary" %>
+  <%= link_to '削除', user_path(@user.id), method: :delete, class: "btn btn-secondary content-left" %>
 <% end %>
