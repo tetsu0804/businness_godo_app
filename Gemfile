@@ -39,6 +39,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem'webdrivers'
+
 end
 
 group :development do
@@ -66,3 +67,4 @@ gem 'rails_admin'
 gem 'enum_help'
 gem 'bootstrap'
 gem 'bootstrap-will_paginate'
+gem 'dotenv-rails'
