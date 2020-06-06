@@ -23,7 +23,7 @@ RSpec.feature 'Login User', type: :feature do
     fill_in 'パスワード', with: 'password'
     click_button 'ログイン'
     expect(page.current_path).to eq new_user_session_path
-    expect(page).to have_link 'ログイン'
+    expect(page).to have_content 'ログイン'
     expect(page).to_not have_link 'ログアウト'
     expect(page).to have_content 'Email もしくはパスワードが不正です。'
   end
@@ -34,7 +34,7 @@ RSpec.feature 'Login User', type: :feature do
     fill_in 'パスワード', with: ''
     click_button 'ログイン'
     expect(page.current_path).to eq new_user_session_path
-    expect(page).to have_link 'ログイン'
+    expect(page).to have_content 'ログイン'
     expect(page).to_not have_link 'ログアウト'
     expect(page).to have_content 'Email もしくはパスワードが不正です。'
   end

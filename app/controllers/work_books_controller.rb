@@ -1,5 +1,5 @@
 class WorkBooksController < ApplicationController
-
+  before_action :admin_access, only: [:book, :booking]
   def index
     @user = User.find(params[:user_id])
     @work_books = @user.work_index_will_pagenate(params[:page]).order('created_at DESC')
@@ -70,6 +70,12 @@ class WorkBooksController < ApplicationController
   end
   private
 
+    def admin_access
+      unless current_user.admin?
+        flash[:danger] = '管理者権限が無いためアクセスできません'
+        redirect_to user_path(current_user.id)
+      end
+    end
     def work_book_params
       params.require(:work_book).permit(:paid, :user_id)
     end

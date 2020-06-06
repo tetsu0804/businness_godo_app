@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light rounded-lg">
     <%= link_to '米沢合同', root_path, class:"navbar-brand header-font" %>
@@ -13,7 +14,7 @@
       </ul>
     </div>
     <ul class="nav justify-content-end nav-right">
-      <% if user_signed_in? %>
+
         <li class="nav-link right-content">
           <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "header-font" %>
         </li>
@@ -44,12 +45,10 @@
             <%= link_to '連絡帳',  departments_path, class: "header-font" %>
           </li>
         <% end %>
-      <% else %>
-        <li class="nav-link right-content">
-          <%= link_to 'ログイン', new_user_session_path, class: "header-font" %>
-        </li>
-      <% end %>
+
+
     </ul>
     </div>
   </nav>
 </header>
+<% end %>
