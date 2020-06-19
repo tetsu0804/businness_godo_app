@@ -11,8 +11,14 @@ RSpec.feature '月別仕事一覧', type: :feature do
     @tankyori = Department.create(department_name: '短距離')
 
     UserDepartment.create(user_id: @eriko.id, department_id: @tankyori.id)
+    UserDepartment.create(user_id: @coco.id, department_id: @tankyori.id)
+
 
     @job_by_month = JobContent.create(title: 'ヤマダ電気配送', description: '冷蔵庫配送業務 冷蔵庫10台', start_time: 'Sat, 20 Jun 2020 10:00:00 JST +09:00', price: 1000, work_address: '山形県米沢市成島町1-1-11111', user_id: @eriko.id, department_id: @tankyori.id )
+
+    @job_by_month2 = JobContent.create(title: 'ヤマザワ米沢中田店', description: '新しい棚運搬作業 棚20台', start_time: 'Sun, 21 Jun 2020 10:00:00 JST +09:00', price: 1000, work_address: '山形県米沢市中田町2-2-2222', user_id: @coco.id, department_id: @tankyori.id )
+
+    @job_by_month = JobContent.create(title: 'ヨークベニマル米沢店', description: 'ヨークベニマル本社からの販促物', start_time: 'Mon, 22 Jun 2020 10:00:00 JST +09:00', price: 1000, work_address: '山形県米沢市駅前町3-3-3333', user_id: @eriko.id, department_id: @tankyori.id )
 
     login_as @tetsu
   end

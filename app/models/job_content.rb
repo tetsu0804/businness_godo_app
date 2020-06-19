@@ -1,6 +1,7 @@
 class JobContent < ApplicationRecord
   belongs_to :user
   belongs_to :department
+  belongs_to :trading_company
 
   validates :title, presence: true
   validates :description, presence: true

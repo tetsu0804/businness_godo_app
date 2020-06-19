@@ -4,6 +4,11 @@
     <%= form_with(model: @job_content, local: true) do |f| %>
 
       <div class="form-group">
+        <%= f.label :trading_company_id, '取引会社' %>
+        <%= f.select :trading_company_id, options_from_collection_for_select(TradingCompany.all, :id, :company_name), {prompt: '取引会社'},{ class: 'form-control col-md-6'} %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :department_id, '部署' %>
         <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :department_name), {prompt: '部署'}, {data: {remote: true, url: url_for(action: :select_user)}, class: 'form-control col-md-6 '} %>
       </div>

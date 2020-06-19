@@ -14,6 +14,7 @@ RSpec.feature 'Create Job Content', type: :feature do
 
     @eriko_tankyori = UserDepartment.create(user_id: @eriko.id, department_id: @tankyori.id)
 
+    @trading_company = TradingCompany.create(company_name: '株式会社 インテグリスジャパン', address: '山形県米沢市万世町1-1-1111', tel: '0238221100')
     login_as @tetsu
   end
 
@@ -21,6 +22,7 @@ RSpec.feature 'Create Job Content', type: :feature do
     visit '/'
     click_link '管理'
     click_link '仕事作成'
+    select '株式会社 インテグリスジャパン', from: 'job_content[trading_company_id]'
     select '短距離', from: 'job_content[department_id]'
     select '早坂 絵理子 さん', from: 'job_content[user_id]'
     select '2020', from: 'job_content[start_time(1i)]'
