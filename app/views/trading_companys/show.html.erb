@@ -1,0 +1,27 @@
+<div class="col-md-12 department">
+  <div class="col-md-12 bg-primary text-center">
+    <%= link_to '取引会社一覧', trading_companys_path, class: 'text-light' %>
+  </div>
+  <table class="table col-md-6 text-center show-width">
+    <thead>
+      <tr>
+        <th scope="col">会社名</th>
+        <th scope="col"><%= @company.company_name %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">住所</th>
+        <td><%= @company.address %></td>
+      </tr>
+      <tr>
+        <th scope="row">電話番号</th>
+        <td><%= @company.tel %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class=" col-md-6 show-width d-flex">
+    <div class="col-md-3"><%= link_to '編集', edit_trading_company_path(@company.id) %></div>
+    <div class="col-md-3"><%= link_to '削除', trading_company_path(@company.id), method: :delete %></div>
+  </div>
+</div>

@@ -40,6 +40,8 @@
               <%= link_to '社員勤務簿',   work_books_path, class: "header-font dropdown-item" %>
               <%= link_to '仕事作成', new_job_content_path, class: "header-font dropdown-item" %>
               <%= link_to '管理者ページ', '/admin', class: "header-font dropdown-item" %>
+              <%= link_to '取引会社一覧', trading_companys_path , class: "header-font dropdown-item" %>
+              <%= link_to '取引会社作成', new_trading_company_path , class: "header-font dropdown-item" %>
           </li>
         <% else %>
           <li class="nav-link right-content">

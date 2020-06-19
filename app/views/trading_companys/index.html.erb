@@ -1,0 +1,19 @@
+<div class="col-md-12">
+  <table class="table col-md-6 text-center show-width">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">会社名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @companys.each do |company| %>
+        <tr>
+          <th scope="row"><%= link_to company.id, trading_company_path(company.id) %></th>
+          <td><%= link_to company.company_name, trading_company_path(company.id) %></td>
+        </tr>
+        <tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
