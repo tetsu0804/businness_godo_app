@@ -25,8 +25,9 @@ RSpec.feature '当月の出勤簿',type: :feature do
     travel_back
   end
 
-  scenario '成功' do
+  scenario '成功',js: true do
     visit '/'
+    click_link '管理'
     click_link '社員勤務簿'
     click_link '早坂絵理子さん'
     expect(page).to have_content '2020年06月04日'

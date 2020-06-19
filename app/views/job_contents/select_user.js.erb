@@ -1,0 +1,1 @@
+$('#selecting').html("<%= j(select :job_content, :user_id, options_from_collection_for_select(@users, :id, 'name_full'), {prompt: '氏名'},{class: 'form-control col-md-6'}) %>");

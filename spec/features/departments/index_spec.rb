@@ -6,16 +6,18 @@ RSpec.feature '部署一覧', type: :feature do
     login_as @tetsu
   end
 
-  scenario '部署一覧画面に部署作成リンクがある' do
+  scenario '部署一覧画面に部署作成リンクがある', js: true do
     visit '/'
+    click_link '管理'
     click_link '社員ページ'
     expect(page).to have_link '部署作成リンク'
   end
 
-  scenario '部署一覧がある' do
+  scenario '部署一覧がある', js: true do
     department = Department.create(department_name: '短距離')
 
     visit '/'
+    click_link '管理'
     click_link '社員ページ'
     expect(page).to have_link '短距離'
   end

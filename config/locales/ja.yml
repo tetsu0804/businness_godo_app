@@ -9,3 +9,8 @@ ja:
     paid:
       vacation: "有給"
       work: "出勤"
+  date:
+    order:
+      - :year
+      - :month
+      - :day

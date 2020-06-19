@@ -17,4 +17,8 @@ class User < ApplicationRecord
   def work_index_will_pagenate(params)
     self.work_books.paginate(page: params,per_page: 15)
   end
+
+  def name_full
+    "#{self.last_name} #{self.first_name} さん"
+  end
 end

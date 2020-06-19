@@ -14,8 +14,9 @@ RSpec.feature '部署一覧からユーザーページへ', type: :feature do
     login_as @tetsu
   end
 
-  scenario 'adminは編集ページがある' do
+  scenario 'adminは編集ページがある', js: true do
     visit '/'
+    click_link '管理'
     click_link '社員ページ'
     click_link '短距離'
     click_link '早坂ここさん'

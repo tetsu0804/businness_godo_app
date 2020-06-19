@@ -1,1 +1,42 @@
-<h1>仕事作成</h1>
+<div class="col-md-12">
+  <div class="col-md-3 main-content">仕事作成</div>
+  <div class="col-md-12 bg-primary">
+    <%= form_with(model: @job_content, local: true) do |f| %>
+
+      <div class="form-group">
+        <%= f.label :department_id, '部署' %>
+        <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :department_name), {prompt: '部署'}, {data: {remote: true, url: url_for(action: :select_user)}, class: 'form-control col-md-6 '} %>
+      </div>
+
+      <div id="selecting" class="form-group">
+        <%= f.label :user_id, '氏名' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.datetime_select :start_time, {use_month_numbers: true, start_time: Time.zone.now},{class: 'form-control col-md-2 date-select'}  %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :title, 'タイトル' %>
+        <%= f.text_field :title, class:'form-control col-md-6' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description, '作業内容' %>
+        <%= f.text_area :description, class:'form-control col-md-6', rows: 10 %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :price, 'プライス' %>
+        <%= f.number_field :price, class:'form-control col-md-6' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :work_address, '作業場所' %>
+        <%= f.text_field :work_address, class:'form-control col-md-6' %>
+      </div>
+
+      <%= f.submit '作成', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

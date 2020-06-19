@@ -10,8 +10,9 @@ RSpec.feature '部署一覧からUser一覧ページへ' do
     login_as @tetsu
   end
 
-  scenario '部署一覧からUser一覧ページへ' do
+  scenario '部署一覧からUser一覧ページへ', js: true do
     visit '/'
+    click_link '管理'
     click_link '社員ページ'
     click_link '短距離'
     expect(page).to have_link '吉田哲朗さん'

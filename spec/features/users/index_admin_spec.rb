@@ -16,8 +16,9 @@ RSpec.feature 'Index User', type: :feature do
     login_as @tetsu
   end
 
-  scenario 'admin user' do
+  scenario 'admin user', js: true do
     visit '/'
+    click_link '管理'
     click_link '社員ページ'
     click_link '短距離'
     expect(page).to have_link '早坂絵理子さん'
