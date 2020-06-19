@@ -23,7 +23,11 @@ RSpec.feature 'Create Job Content', type: :feature do
     click_link '仕事作成'
     select '短距離', from: 'job_content[department_id]'
     select '早坂 絵理子 さん', from: 'job_content[user_id]'
-
+    select '2020', from: 'job_content[start_time(1i)]'
+    select '6', from: 'job_content[start_time(2i)]'
+    select '20', from: 'job_content[start_time(3i)]'
+    select '10', from: 'job_content[start_time(4i)]'
+    select '00', from: 'job_content[start_time(5i)]'
     fill_in 'job_content[title]', with: '引越し業務'
     fill_in 'job_content[description]', with: 'ドナルドトランプさんの引越し作業、アメリカの大統領なので貴重品多数あり。丁寧に扱う事。損失、傷などを付けると国家危機'
     fill_in 'job_content[work_address]', with: '東京都港区'
