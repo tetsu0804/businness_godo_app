@@ -1,0 +1,32 @@
+<div class="col-md-12 department bg-info">
+  <div class="col-md-12 text-center bg-secondary">
+    <%= "#{l Time.zone.now, format: :month}の仕事一覧" %>
+  </div>
+  <div class="col-md-12 bg-dark d-flex">
+    <table class="table col-md-8 text-center show-width bg-danger">
+      <thead>
+        <tr>
+          <th scope="col">作業日</th>
+          <th scope="col">会社名</th>
+          <th scope="col">作業内容</th>
+          <th scope="col">作業者</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @job_contents.each do |job_content| %>
+        <tr>
+          <th scope="row"><%= l job_content.start_time, format: :short %></th>
+          <td><%= link_to job_content.trading_company.company_name, trading_company_path(job_content.trading_company.id) %></td>
+          <td><%= link_to job_content.title,  job_content_path(job_content.id) %></td>
+          <td><%= link_to job_content.user.name_full, user_path(job_content.user.id) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="col-md-2 bg-primary show-width">
+      <% @past_jobs.each do |month, count| %>
+        <%= "#{month} (#{count})" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :job_contents
   match 'select_user', to: 'job_contents#select_user', via: [:get, :post]
-
+  get 'by_month', to: 'job_contents#by_month'
   resources :trading_companys
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

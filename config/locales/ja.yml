@@ -3,6 +3,7 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%Y年%m月%d日"
+      month: "%Y年%m月"
       super_short: "%H時%M分"
       minuts: "%m月%d日 %H時%M分"
   enums:

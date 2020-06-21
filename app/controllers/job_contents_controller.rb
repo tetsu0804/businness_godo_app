@@ -20,6 +20,13 @@ class JobContentsController < ApplicationController
     @users = User.joins(:user_departments).where(user_departments: {department_id: params[:job_content][:department_id] })
   end
 
+  def by_month
+    @job_contents = JobContent.order("start_time DESC").where(start_time:  Time.now.all_month)
+    ary = []
+    #@past_jobs = JobContent.all.order("start_time DESC")
+    @past_jobs = JobContent.group("strftime('%Y年%m月', start_time)").count
+  end
+
   private
 
     def job_content_params
