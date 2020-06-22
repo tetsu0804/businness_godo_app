@@ -1,6 +1,9 @@
 <div class="col-md-12 department border rounded-lg bg-light">
     <div class="col text-center department">
-      <%= "#{l Time.zone.now, format: :month}の仕事一覧" %>
+      <%= "#{l @month, format: :month}の仕事一覧" %>
+    </div>
+    <div class="col text-center">
+      <%= link_to '今月', by_month_path %>
     </div>
   <div class="col-md-12 d-flex">
 

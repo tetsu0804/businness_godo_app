@@ -31,14 +31,12 @@
           <%= link_to full_name(current_user), user_path(current_user.id), class: "header-font" %>
         </li>
         <% if current_user.admin? %>
-          <li class="nav-link right-content">
-           <%= link_to '今月の社員仕事一覧', by_month_path, class: "header-font" %>
-         </li>
           <li class="nav-item dropdown right-content">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               管理
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to '今月の社員仕事一覧', by_month_path, class: "header-font dropdown-item" %>
               <%= link_to '社員ページ',  departments_path, class: "header-font dropdown-item" %>
               <%= link_to '社員勤務簿',   work_books_path, class: "header-font dropdown-item" %>
               <%= link_to '仕事作成', new_job_content_path, class: "header-font dropdown-item" %>

@@ -1,6 +1,6 @@
 require 'rails_helper'
-# 未完成
-RSpec.feature '月別仕事一覧', type: :feature do
+
+RSpec.feature '月別ページ(what_month)', type: :feature do
   before do
     @tetsu = User.create( email: 'test@test.com', password: 'password', password_confirmation: 'password', admin: true, first_name: '哲朗', last_name: '吉田', address: '山形県米沢市御廟二丁目')
 
@@ -28,21 +28,16 @@ RSpec.feature '月別仕事一覧', type: :feature do
     login_as @tetsu
   end
 
-  scenario '今月の仕事一覧' do
+  scenario 'what_monthページ表示' do
     visit '/'
     click_link '管理'
     click_link '今月の社員仕事一覧'
-    expect(page).to have_content '2020年06月の仕事一覧'
-    expect(page).to have_link 'ヤマダ電気配送'
-    expect(page).to have_content '2020年06月22日'
+    click_link '2020年07月 (1)'
+    expect(page).to have_link '販促物配送ヨークベニマル米沢店'
     expect(page).to have_link '早坂 絵理子 さん'
-    expect(page).to have_link 'ヤマザワ米沢中田店'
-    expect(page).to have_link 'ヨークベニマル米沢店'
-    expect(page).to have_link 'ヤマザワ中田店'
     expect(page).to have_link 'ヨークベニマル米沢駅前店'
-    expect(page).to have_link 'ヤマダ電機'
-    expect(page).to_not have_content '販促物配送ヨークベニマル米沢店'
-    expect(page).to have_link '2020年06月 (3)'
-    expect(page).to have_link '2020年07月 (1)'
+    expect(page).to have_content '2020年07月10日'
+    expect(page).to_not have_link 'ヤマダ電機'
+    expect(page).to_not have_link 'ヤマザワ中田店'
   end
 end
