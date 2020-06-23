@@ -20,8 +20,10 @@
       </tr>
     </tbody>
   </table>
-  <div class=" col-md-6 show-width d-flex">
-    <div class="col-md-3"><%= link_to '編集', edit_trading_company_path(@company.id) %></div>
-    <div class="col-md-3"><%= link_to '削除', trading_company_path(@company.id), method: :delete %></div>
-  </div>
+  <% if current_user.admin? %>
+    <div class=" col-md-6 show-width d-flex">
+      <div class="col-md-3"><%= link_to '編集', edit_trading_company_path(@company.id) %></div>
+      <div class="col-md-3"><%= link_to '削除', trading_company_path(@company.id), method: :delete %></div>
+    </div>
+  <% end %>
 </div>
