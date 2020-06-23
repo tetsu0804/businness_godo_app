@@ -1,7 +1,7 @@
-<div class="col-md-12">
-  <div class="col-md-3 main-content">仕事作成</div>
-  <div class="col-md-12 bg-primary">
-    <%= form_with(model: @job_content, local: true) do |f| %>
+<div class="col-md-12 border rounded-lg bg-light ">
+  <div class="col-md-12 main-content">仕事作成</div>
+
+    <%= form_with(model: @job_content, local: true, class: 'col-md-12 show-width') do |f| %>
 
       <div class="form-group">
         <%= f.label :trading_company_id, '取引会社' %>
@@ -43,5 +43,5 @@
 
       <%= f.submit '作成', class: 'btn btn-primary' %>
     <% end %>
-  </div>
+
 </div>

@@ -55,14 +55,3 @@ class JobContentsController < ApplicationController
       params.require(:job_content).permit(:title, :description, :start_time, :price, :work_address, :user_id, :department_id, :trading_company_id)
     end
 end
-# t.string "title", null: false
-# t.text "description", null: false
-# t.datetime "start_time", null: false
-# t.integer "price", null: false
-# t.string "work_address", null: false
-# t.integer "user_id"
-# t.datetime "created_at", null: false
-# t.datetime "updated_at", null: false
-# t.integer "department_id"
-# t.index ["department_id"], name: "index_job_contents_on_department_id"
-# t.index ["user_id"], name: "ind

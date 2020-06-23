@@ -27,10 +27,10 @@
       </tbody>
     </table>
 
-    <%= month_calendar events: @job_contents do |date, job_contents| %>
+    <%= month_calendar events: @jobs do |date, jobs| %>
       <%= date.strftime('%d') %>
-      <% job_contents.each do |job_content| %>
-        <%= link_to job_content.title, job_content_path(job_content.id) %>
+      <% jobs.each do |job| %>
+        <%= link_to job.title, job_content_path(job.id) %>
       <% end %>
     <% end %>
 </div>
