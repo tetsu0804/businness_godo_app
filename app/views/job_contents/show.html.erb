@@ -1,0 +1,35 @@
+<div class="col-md-12 department rounded-lg bg-light">
+  <div class="col-md-12 text-center department">
+    仕事内容
+  </div>
+  <table class="table col-md-12 show-width">
+    <thead>
+      <tr>
+        <th scope="col">作業日</th>
+        <th scope="col"><%= l @job_content.start_time, format: :minuts %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">会社名</th>
+        <td><%= @job_content.trading_company.company_name %></td>
+      </tr>
+      <tr>
+        <th scope="row">作業タイトル</th>
+        <td><%= @job_content.title %></td>
+      </tr>
+      <tr>
+        <th scope="row">作業詳細</th>
+        <td><%= @job_content.description %></td>
+      </tr>
+      <tr>
+        <th scope="row">作業場所</th>
+        <td><%= @job_content.work_address %></td>
+      </tr>
+      <tr>
+        <th scope="row">作業者</th>
+        <td><%= @job_content.user.name_full %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

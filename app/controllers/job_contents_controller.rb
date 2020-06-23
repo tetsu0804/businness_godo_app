@@ -17,6 +17,10 @@ class JobContentsController < ApplicationController
     end
   end
 
+  def show
+    @job_content = JobContent.find(params[:id])
+  end
+
   def select_user
     @users = User.joins(:user_departments).where(user_departments: {department_id: params[:job_content][:department_id] })
   end
