@@ -68,3 +68,4 @@ gem 'enum_help'
 gem 'bootstrap'
 gem 'bootstrap-will_paginate'
 gem 'dotenv-rails'
+gem "simple_calendar", "~> 2.0"

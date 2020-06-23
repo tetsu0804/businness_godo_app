@@ -26,4 +26,11 @@
         <% end %>
       </tbody>
     </table>
+
+    <%= month_calendar events: @job_contents do |date, job_contents| %>
+      <%= date.strftime('%d') %>
+      <% job_contents.each do |job_content| %>
+        <%= link_to job_content.title, job_content_path(job_content.id) %>
+      <% end %>
+    <% end %>
 </div>
