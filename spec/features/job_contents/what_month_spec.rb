@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature '月別ページ(what_month)', type: :feature do
   before do
+    travel_to '2020-6-1 10:00'.to_time
     @tetsu = User.create( email: 'test@test.com', password: 'password', password_confirmation: 'password', admin: true, first_name: '哲朗', last_name: '吉田', address: '山形県米沢市御廟二丁目')
 
     @eriko = User.create( email: 'test1@test.com', password: 'password', password_confirmation: 'password', admin: false, first_name: '絵理子', last_name: '早坂', address: '山形県米沢市御廟二丁目')
@@ -26,6 +27,9 @@ RSpec.feature '月別ページ(what_month)', type: :feature do
     @job_next_month = JobContent.create(title: '販促物配送ヨークベニマル米沢店', description: 'ヨークベニマル本社からの販促物', start_time: 'Fri, 10 Jul 2020 10:00:00 JST +09:00', price: 1000, work_address: '山形県米沢市駅前町3-3-3333', user_id: @eriko.id, department_id: @tankyori.id, trading_company_id: @benimalyonezawa.id)
 
     login_as @tetsu
+  end
+  after do
+    travel_back
   end
 
   scenario 'what_monthページ表示' do

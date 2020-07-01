@@ -13,12 +13,13 @@
     <div class="container-fluid">
       <div class="row">
         <% flash.each do |key, message| %>
-          <div class=" col-md-12 text-center alert-<%= key == 'notice' ? 'suceess' : 'danger' %>">
+          <div class=" col-sm-10 text-center forms alert-<%= key == 'notice' ? 'suceess' : 'danger' %>">
             <%= message %>
           </div>
         <% end %>
-        <%= yield %>
       </div>
+        <%= yield %>
+
     </div>
   </body>
 </html>

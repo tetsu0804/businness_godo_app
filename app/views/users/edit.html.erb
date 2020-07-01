@@ -1,62 +1,64 @@
-<div class="col-md-12 center-block">
-  <%= form_with(model: @user, method: :patch, local: true) do |f| %>
-    <div class="row">
-      <div class="col">
-        <%= f.label :last_name, '苗字'  %>
-        <%= f.text_field :last_name, class: 'form-control' %>
-      </div>
-      <div class="col">
-        <%= f.label :first_name, '名前'  %>
-        <%= f.text_field :first_name, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <%= f.label :email, 'メールアドレス' %>
-        <%= f.email_field :email, class: 'form-control' %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <%= f.label :address, '住所' %>
-        <%= f.text_field :address, class: 'form-control' %>
-      </div>
-    </div>
-
-    <div class="row check-label">
-      <%= f.collection_check_boxes(:department_ids, @departments, :id, :department_name, include_hidden: false) do |b| %>
+<div class="row">
+  <div class="col-sm-10 bg-white rounded center-20-top">
+    <%= form_with(model: @user, method: :patch, local: true) do |f| %>
+      <div class="row">
         <div class="col">
-          <div class="form-check form-check-inline">
-            <div class="form-check-input">
-              <%= b.check_box %>
-            </div>
-            <div class="form-check-label ">
-              <%= b.label { b.text } %>
+          <%= f.label :last_name, '苗字'  %>
+          <%= f.text_field :last_name, class: 'form-control bg-light' %>
+        </div>
+        <div class="col">
+          <%= f.label :first_name, '名前'  %>
+          <%= f.text_field :first_name, class: 'form-control bg-light' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= f.label :email, 'メールアドレス' %>
+          <%= f.email_field :email, class: 'form-control bg-light' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= f.label :address, '住所' %>
+          <%= f.text_field :address, class: 'form-control bg-light' %>
+        </div>
+      </div>
+
+      <div class="row check-label">
+        <%= f.collection_check_boxes(:department_ids, @departments, :id, :department_name, include_hidden: false) do |b| %>
+          <div class="col">
+            <div class="form-check form-check-inline">
+              <div class="form-check-input">
+                <%= b.check_box %>
+              </div>
+              <div class="form-check-label ">
+                <%= b.label { b.text } %>
+              </div>
             </div>
           </div>
+        <% end %>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <%= f.label :password, 'パスワード' %>
+          <%= f.password_field :password, class: 'form-control bg-light' %>
         </div>
-      <% end %>
-    </div>
-
-
-    <div class="row">
-      <div class="col">
-        <%= f.label :password, 'パスワード' %>
-        <%= f.password_field :password, class: 'form-control' %>
       </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <%= f.label :password_confirmation, 'パスワード確認' %>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <div class="row">
+        <div class="col">
+          <%= f.label :password_confirmation, 'パスワード確認' %>
+          <%= f.password_field :password_confirmation, class: 'form-control bg-light' %>
+        </div>
       </div>
-    </div>
 
-    <div class="row check-label">
-      <div class="col">
-        <%= f.submit '編集', class: "btn btn-success" %>
+      <div class="row check-label">
+        <div class="col">
+          <%= f.submit '編集', class: "btn btn-secondary" %>
+        </div>
       </div>
-    </div>
 
-  <% end %>
+    <% end %>
+  </div>
 </div>

@@ -19,6 +19,10 @@ body {
   color: rgb(227, 3, 50);
 }
 
+.blank {
+  margin: 0;
+}
+
 .nav-right {
   margin-left: 5px;
 }
@@ -38,9 +42,15 @@ body {
   margin-top: 10px;
 }
 
+.title-font {
+  font-size: 3rem;
+}
 .main-content {
-  margin-top: 12px;
-  font-size: 2.5rem;
+  font-size: 1.2rem;
+}
+
+.top-blank {
+  margin-top: 20px;
 }
 
 .new-form {
@@ -109,10 +119,35 @@ body {
   margin: 0 auto;
 }
 
+.checking-btn {
+  cursor: pointer;
+}
 .show-width {
   margin: 40px auto;
 }
 
 .calender {
   margin-top: 50px;
+}
+
+.center-10-top {
+  margin: 10px auto;
+}
+
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+
+.center-20-top {
+  margin: 20px auto;
+  padding:  10px 10px;
+}
+
+.btn-edit {
+  text-align: center;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.btn-edit:hover {
+  opacity: 0.6;
 }

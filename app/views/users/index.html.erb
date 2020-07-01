@@ -1,17 +1,21 @@
-<h2 class="index-title">社員一覧</h2>
-<table class="table main-table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">氏名</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<div class="row">
+  <h2 class="title-font col-sm-2 offset-sm-1 index-title">社員一覧</h2>
+</div>
+<div class="row">
+  <table class="col-sm-9 table main-table show-width bg-white rounded">
+    <thead>
       <tr>
-        <th scope="row"><%= user.id %></th>
-        <td><%= link_to "#{user.last_name} #{user.first_name}", user_path(user.id) %></td>
+        <th scope="col">ID</th>
+        <th scope="col">氏名</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <th scope="row"><%= user.id %></th>
+          <td><%= link_to "#{full_name(user)}", user_path(user.id), class: "text-dark" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

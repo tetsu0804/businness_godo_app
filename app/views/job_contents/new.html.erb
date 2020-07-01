@@ -1,47 +1,57 @@
-<div class="col-md-12 border rounded-lg bg-light ">
-  <div class="col-md-12 main-content">仕事作成</div>
+<div class="row">
+  <div class="col-sm-10 bg-white rounded center-20-top">
+    <div class="row">
+      <div class="col-sm-3 offset-sm-5 title-font">仕事作成</div>
+    </div>
+    <div class="row">
+      <div class="col-sm-10 center-10-top">
+        <%= form_with(model: @job_content, local: true) do |f| %>
 
-    <%= form_with(model: @job_content, local: true, class: 'col-md-12 show-width') do |f| %>
+            <div class="form-group col-sm-6 offset-sm-3">
+              <%= f.label :trading_company_id, '取引会社' %>
+              <%= f.select :trading_company_id, options_from_collection_for_select(TradingCompany.all, :id, :company_name), {prompt: '取引会社'},{ class: 'form-control bg-light'} %>
+            </div>
 
-      <div class="form-group">
-        <%= f.label :trading_company_id, '取引会社' %>
-        <%= f.select :trading_company_id, options_from_collection_for_select(TradingCompany.all, :id, :company_name), {prompt: '取引会社'},{ class: 'form-control col-md-6'} %>
+            <div class="form-group col-sm-6 offset-sm-3">
+              <%= f.label :department_id, '部署' %>
+              <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :department_name), {prompt: '部署'}, {data: {remote: true, url: url_for(action: :select_user)}, class: 'form-control bg-light'} %>
+            </div>
+
+            <div id="selecting" class="form-group col-sm-6 offset-sm-3">
+              <%= f.label :user_id, '氏名' %>
+            </div>
+
+            <div class="form-group col-sm-7 offset-sm-3">
+              <%= f.datetime_select :start_time, {use_month_numbers: true, start_time: Time.zone.now},{class: 'form-control col-sm-2 date-select bg-light'}  %>
+            </div>
+
+            <div class="form-group col-sm-6 offset-sm-3">
+              <%= f.label :title, 'タイトル' %>
+              <%= f.text_field :title, class:'form-control bg-light' %>
+            </div>
+
+            <div class="form-group col-sm-6 offset-sm-3">
+              <%= f.label :description, '作業内容' %>
+              <%= f.text_area :description, class:'form-control bg-light', rows: 10 %>
+            </div>
+
+            <div class="form-group col-sm-6 offset-sm-3">
+              <%= f.label :price, 'プライス' %>
+              <%= f.number_field :price, class:'form-control bg-light' %>
+            </div>
+
+            <div class="form-group col-sm-6 offset-sm-3">
+              <%= f.label :work_address, '作業場所' %>
+              <%= f.text_field :work_address, class:'form-control bg-light' %>
+            </div>
+
+            <div class="form-group col-sm-6 offset-sm-3">
+              <%= f.submit '作成', class: 'btn btn-primary form-control' %>
+            </div>
+
+          <% end %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :department_id, '部署' %>
-        <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :department_name), {prompt: '部署'}, {data: {remote: true, url: url_for(action: :select_user)}, class: 'form-control col-md-6 '} %>
-      </div>
-
-      <div id="selecting" class="form-group">
-        <%= f.label :user_id, '氏名' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.datetime_select :start_time, {use_month_numbers: true, start_time: Time.zone.now},{class: 'form-control col-md-2 date-select'}  %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :title, 'タイトル' %>
-        <%= f.text_field :title, class:'form-control col-md-6' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :description, '作業内容' %>
-        <%= f.text_area :description, class:'form-control col-md-6', rows: 10 %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :price, 'プライス' %>
-        <%= f.number_field :price, class:'form-control col-md-6' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :work_address, '作業場所' %>
-        <%= f.text_field :work_address, class:'form-control col-md-6' %>
-      </div>
-
-      <%= f.submit '作成', class: 'btn btn-primary' %>
-    <% end %>
-
+    </div>
+  </div>
 </div>

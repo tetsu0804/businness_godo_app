@@ -1,29 +1,37 @@
-<div class="col-md-12 department">
-  <div class="col-md-12 bg-primary text-center">
-    <%= link_to '取引会社一覧', trading_companys_path, class: 'text-light' %>
-  </div>
-  <table class="table col-md-6 text-center show-width">
-    <thead>
-      <tr>
-        <th scope="col">会社名</th>
-        <th scope="col"><%= @company.company_name %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">住所</th>
-        <td><%= @company.address %></td>
-      </tr>
-      <tr>
-        <th scope="row">電話番号</th>
-        <td><%= @company.tel %></td>
-      </tr>
-    </tbody>
-  </table>
-  <% if current_user.admin? %>
-    <div class=" col-md-6 show-width d-flex">
-      <div class="col-md-3"><%= link_to '編集', edit_trading_company_path(@company.id) %></div>
-      <div class="col-md-3"><%= link_to '削除', trading_company_path(@company.id), method: :delete %></div>
+<div class="row">
+  <div class="col-sm-10 center-10-top">
+    <div class="row">
+      <div class="col-sm-3 text-center center-10-top bg-success">
+        <%= link_to '取引会社一覧', trading_companys_path, class: 'text-white' %>
+      </div>
     </div>
-  <% end %>
+
+    <div class="row">
+      <div class="col-sm-6 show-width">
+        <table class="table main-table">
+          <thead>
+            <tr>
+              <th scope="col">会社名</th>
+              <th scope="col"><%= @company.company_name %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">住所</th>
+              <td><%= @company.address %></td>
+            </tr>
+            <tr>
+              <th scope="row">電話番号</th>
+              <td><%= @company.tel %></td>
+            </tr>
+          </tbody>
+        </table>
+        <% if current_user.admin? %>
+          <div class=" col-sm-12 d-flex">
+            <div class="col-sm-2 bg-secondary rounded btn-edit"><%= link_to '編集', edit_trading_company_path(@company.id), class: "text-white" %></div>
+            <div class="col-sm-2 bg-secondary rounded btn-edit"><%= link_to '削除', trading_company_path(@company.id), method: :delete, class: "text-white" %></div>
+          </div>
+        <% end %>
+    </div>
+  </div>
 </div>

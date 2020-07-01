@@ -1,5 +1,8 @@
-<div class="col-md-12">
-  <table class="table col-md-6 text-center show-width">
+<div class="row">
+  <h2 class="title-font col-sm-3 offset-sm-1 text-center index-title">取引会社一覧</h2>
+</div>
+<div class="row">
+  <table class="table col-md-9 main-table show-width bg-white rounded">
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -10,7 +13,7 @@
       <% @companys.each do |company| %>
         <tr>
           <th scope="row"><%= link_to company.id, trading_company_path(company.id) %></th>
-          <td><%= link_to company.company_name, trading_company_path(company.id) %></td>
+          <td><%= link_to company.company_name, trading_company_path(company.id), class: "text-dark" %></td>
         </tr>
         <tr>
       <% end %>

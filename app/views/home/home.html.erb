@@ -1,38 +1,40 @@
-<div class="col-sm-10 department border rounded-lg bg-light show-width">
-    <div class="col text-center department">
-      本日の作業内容
-    </div>
-    <table class="table text-center show-width col-sm-10">
-      <thead>
-        <tr>
-          <th scope="col">作業日</th>
-          <th scope="col">会社名</th>
-          <th scope="col">作業タイトル</th>
-          <th scope="col">作業詳細</th>
-          <th scope="col">作業場所</th>
-          <th scope="col">作業者</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @job_contents.each do |job_content| %>
-        <tr>
-          <th scope="row"><%= l job_content.start_time, format: :minuts %></th>
-          <td><%= link_to job_content.trading_company.company_name, trading_company_path(job_content.trading_company.id) %></td>
-          <td><%= link_to job_content.title,  job_content_path(job_content.id) %></td>
-          <td><%= link_to job_content.description,  job_content_path(job_content.id) %></td>
-          <td><%= link_to job_content.work_address,  job_content_path(job_content.id) %></td>
-          <td><%= link_to job_content.user.name_full, user_path(job_content.user.id) %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="row">
+  <div class="col-sm-10 department border rounded-lg bg-light show-width">
+      <div class="col text-center department">
+        本日の作業内容
+      </div>
+      <table class="table text-center show-width col-sm-10">
+        <thead>
+          <tr>
+            <th scope="col">作業日</th>
+            <th scope="col">会社名</th>
+            <th scope="col">作業タイトル</th>
+            <th scope="col">作業詳細</th>
+            <th scope="col">作業場所</th>
+            <th scope="col">作業者</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @job_contents.each do |job_content| %>
+          <tr>
+            <th scope="row"><%= l job_content.start_time, format: :minuts %></th>
+            <td><%= link_to job_content.trading_company.company_name, trading_company_path(job_content.trading_company.id) %></td>
+            <td><%= link_to job_content.title,  job_content_path(job_content.id) %></td>
+            <td><%= link_to job_content.description,  job_content_path(job_content.id) %></td>
+            <td><%= link_to job_content.work_address,  job_content_path(job_content.id) %></td>
+            <td><%= link_to job_content.user.name_full, user_path(job_content.user.id) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-    <div class="calender">
-      <%= month_calendar events: @jobs do |date, jobs| %>
-        <%= date.strftime('%d') %>
-        <% jobs.each do |job| %>
-          <%= link_to job.title, job_content_path(job.id) %>
+      <div class="calender">
+        <%= month_calendar events: @jobs do |date, jobs| %>
+          <%= date.strftime('%d') %>
+          <% jobs.each do |job| %>
+            <%= link_to job.title, job_content_path(job.id) %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+  </div>
 </div>
