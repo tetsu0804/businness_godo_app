@@ -27,7 +27,7 @@ class JobContentsController < ApplicationController
 
   def by_month
     @job_contents = JobContent.order("start_time DESC").where(start_time:  Time.now.all_month)
-    @past_jobs = JobContent.group("strftime('%Y年%m月', start_time)").count
+    @past_jobs = JobContent.group_by_month(:start_time, format: "%Y%m").count
   end
 
   def what_month
@@ -39,7 +39,7 @@ class JobContentsController < ApplicationController
     @month = Time.parse("#{time}")
 
     @job_contents = JobContent.where(start_time: @month.all_month).order("start_time DESC")
-    @past_jobs = JobContent.group("strftime('%Y年%m月', start_time)").count
+    @past_jobs = JobContent.group_by_month(:start_time, format: "%Y%m").count
   end
 
   private

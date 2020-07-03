@@ -30,12 +30,7 @@
       </table>
       <div class="col-sm-2 show-width bg-light">
         <% @past_jobs.each do |month, count| %>
-          <% month = "#{month}" %>
-          <% y = month.slice(0,4) %>
-          <% m = month.slice(5,2) %>
-          <% ym = "#{y}" + "#{m}" %>
-
-          <%= link_to "#{month} (#{count})", year_month_path(ym.to_i), class: "text-dark" %>
+          <%= link_to year_month(month, count), year_month_path(month.to_i), class: "text-dark" %>
         <% end %>
       </div>
     </div>
